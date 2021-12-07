@@ -11,6 +11,8 @@ Nesse projeto foi desenvolvido uma API para comunicação com um TODO List (list
 - Pesquisas aividades pelo id
 - Atualizar atividades
 - Remover atividades cadastradas
+- cadastrar usuários
+- elencar todas as atividades de um determinado usuário (/issues/users/{usID})
 
 ## Como utilizar a API
 ---
@@ -28,3 +30,5 @@ Nesse projeto foi desenvolvido uma API para comunicação com um TODO List (list
 ## Tarefas em aberto
 ---
 - Tratar os erros que são enviados quando o cliente faz uma requisição inválida
+- fazer autenticação de usuários
+- corrigir relações
