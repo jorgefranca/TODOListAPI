@@ -8,6 +8,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
+import teste.estagio.ToDoListAPI.repository.UsersRepository;
+
 public class FormIssues {
 	@Positive
 	private Integer id;
@@ -21,7 +23,10 @@ public class FormIssues {
 	private boolean doing;
 	@NotNull
 	private boolean done;
+	@Positive
+	private Integer userId;
 	
+	//getters and setters
 	public Integer getId() {
 		return id;
 	}
@@ -82,7 +87,15 @@ public class FormIssues {
 	}
 
 
-	public Issues converterFormParaIssues() {
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+	public Issues converterFormParaIssues(UsersRepository usersRepository) {
 		/*
 		 * if usado para verificar se dois status recebem valor 'true'
 		 * se houver dois valores 'true', o if é executado. Caso contrário, o else é executado.
@@ -94,7 +107,8 @@ public class FormIssues {
 			return new Issues();
 			
 		}else {
-			return new Issues(id, descr, createAT, todo, doing, done);
+			Users users = usersRepository.findById(userId).get();
+			return new Issues(id, descr, createAT, todo, doing, done, users);
 		}
 	}
 }
